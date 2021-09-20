@@ -1,0 +1,37 @@
+$female-color: #f76e97;
+
+.btn-female {
+  color: $female-color;
+  border-color: $female-color;
+}
+
+.btn-female:hover {
+  color: #fff;
+  background-color: $female-color;
+  border-color: $female-color;
+}
+
+.btn-female:focus,
+.btn-female.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+}
+
+.btn-female.disabled,
+.btn-female:disabled {
+  color: $female-color;
+  background-color: transparent;
+}
+
+.btn-female:not(:disabled):not(.disabled):active,
+.btn-female:not(:disabled):not(.disabled).active,
+.show > .btn-female.dropdown-toggle {
+  color: #fff;
+  background-color: $female-color;
+  border-color: $female-color;
+}
+
+.btn-female:not(:disabled):not(.disabled):active:focus,
+.btn-female:not(:disabled):not(.disabled).active:focus,
+.show > .btn-female.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+}

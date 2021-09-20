@@ -1,0 +1,36 @@
+.btn-female {
+  color: #f76e97;
+  border-color: #f76e97;
+}
+
+.btn-female:hover {
+  color: #fff;
+  background-color: #f76e97;
+  border-color: #f76e97;
+}
+
+.btn-female:focus,
+.btn-female.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+}
+
+.btn-female.disabled,
+.btn-female:disabled {
+  color: #f76e97;
+  background-color: transparent;
+}
+
+.btn-female:not(:disabled):not(.disabled):active,
+.btn-female:not(:disabled):not(.disabled).active,
+.show > .btn-female.dropdown-toggle {
+  color: #fff;
+  background-color: #f76e97;
+  border-color: #f76e97;
+}
+
+.btn-female:not(:disabled):not(.disabled):active:focus,
+.btn-female:not(:disabled):not(.disabled).active:focus,
+.show > .btn-female.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+}
+
