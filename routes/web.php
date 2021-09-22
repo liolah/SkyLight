@@ -35,10 +35,11 @@ Auth::routes();
 
 // Auth::routes(['verify' => true]);  // for the email verification
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/test', function (Request $request) {
-    dd($request->input('body'));
-})->name('test');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::post('/test', function (Request $request) {
+//     dd($request->getContent());
+// })->name('test');
+
 Route::resource('users', 'UserController')->except('create', 'store');
 Route::resource('posts', 'PostController');
 Route::resource('comments', 'CommentController')->only('store', 'update', 'destroy');

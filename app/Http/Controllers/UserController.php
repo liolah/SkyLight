@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('users.index')->with($users);
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show')->with($user);
+        return view('users.show', compact('user'));
     }
 
 
@@ -44,7 +44,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user.edit')->with($user);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -79,6 +79,6 @@ class UserController extends Controller
 
     { 
         $user->delete();
-        // Auth::logout();
+        Auth::logout();
     }
 }

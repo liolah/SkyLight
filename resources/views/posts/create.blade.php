@@ -9,7 +9,7 @@
                 <div class="card-header text-center">Create a new post</div>
 
                 <div class="card-body">
-                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('test') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="title" class="col-md-4 col-form-label text-md-right  ml-1 row">Post title</label>

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@include('layouts.leftSidebar') 
 @section('content')
 <div class="container mb-lg-5">
 <div class="card">

@@ -51,14 +51,15 @@ $female-color: #f76e97;
     backdrop-filter: blur(7px);
 }
 
-.right-sidebar ul {
+.left-sidebar ul {
     list-style-type: none;
 }
 
-.right-sidebar:first-child {
+.left-sidebar:first-of-type(a) {
+    background-color: rgba(157, 21, 21, 0.5);
 }
 
-.right-sidebar li {
+.left-sidebar li {
     display: inline-block;
 }
 
@@ -80,4 +81,18 @@ $female-color: #f76e97;
     background-image: url("/imgs/BackGrounds/bg (3).png");
     background-size: cover;
     background-attachment: fixed;
+}
+
+.prof-pic{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: 200x;
+    margin-left: 50px;
+    position: relative;
+    top: 100px;
 }
