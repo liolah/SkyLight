@@ -14,28 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $users = User::paginate(10);
+        return view('users.index')->with($users);
     }
 
     /**
@@ -46,8 +26,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user.show')->with($user);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +38,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit')->with($user);
     }
 
     /**
@@ -69,7 +50,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'in:male,female'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user->update($data);
+
+        return redirect('/users/' . $user)->with('success', true);
     }
 
     /**
@@ -80,6 +71,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        // Auth::logout();
     }
 }

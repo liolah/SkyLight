@@ -24,8 +24,9 @@ $factory->define(User::class, function (Faker $faker) {
         'gender' => $faker->randomElement(['male','female']),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => 'Very secure password $2y$10$92IXUNpkjO0rOQ5byMi', // password
-        // 'image_path' => $faker->randomElement([]),
+        'password' => 'Very secure password lol', // password
+        'image' => 'imgs/profilePics/ProfPic (' . rand(1,9) . ').PNG',
+        'about' => $faker->realText,
         'remember_token' => Str::random(10),
     ];
 });

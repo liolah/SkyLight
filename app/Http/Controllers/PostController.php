@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::latest()->paginate(15);
+        return view('posts.index')->with($posts);
     }
 
     /**
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show')->with($post);
     }
 
     /**
@@ -57,7 +58,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit')->with($post);
     }
 
     /**
@@ -80,6 +81,16 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        // return redirect('/posts');
+        return back();
+    }
+
+    protected function validatePost(){
+        return $request->validate([
+            'title' => ['required', 'string'],
+            'body' => ['required', 'string'],
+            'image' => ['required', 'image', 'max:3000'],
+        ]);
     }
 }

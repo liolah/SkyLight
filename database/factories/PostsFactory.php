@@ -10,8 +10,13 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'user_id' => rand(1,DB::table('users')->max('id')),
         'title' => $faker->catchPhrase,
+        // 'title' => $faker->sentence(3), // Another way to generate titles
         // 'body' => $faker->text, // Lorem
         'body' => $faker->realText, // random actual words
-        // 'image_path' => $faker->randomElement([]),
+        'category' => $faker->randomElement(['Anime', 'Programming', 'Games', 'Paradoxes', 'Existential crisis', 'Derealization', 'Emotional problems']),
+        'image' => $faker->randomElement([
+            'imgs/profilePics/ProfPic (' . rand(1,9) . ').PNG',
+            NULL
+        ]),
     ];
 });

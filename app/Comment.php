@@ -8,6 +8,8 @@ class Comment extends Model
 {
     protected $table = 'comments';
 
+    protected $gaurded = [];
+
     /**
      * Get the user that owns the Comment
      *
