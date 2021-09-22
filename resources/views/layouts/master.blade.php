@@ -20,19 +20,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master.css') }}" rel="stylesheet">
     @section('bg')
-    <style> body{
-        background-image: url("imgs/BackGrounds/bg (1).jpg");
-        background-size: 100vw 100vh;
+    <style> .master-body{
+        background-image: url("/imgs/BackGrounds/bg (3).png");
+        background-size: cover;
+        background-attachment: fixed;
+        /* background-color: skyblue; */
     }  </style>
     @show
 </head>
-<body>
+<body class="master-body">
+    {{-- <div id="stars" style="position: absolute; width: 100vw; height: 100wh;"> --}}
     @include('layouts.header')
 
-        <main class="py-4">
             @yield('content')
-        </main>
     
     @include('layouts.footer')
+    {{-- </div> --}}
 </body>
 </html>

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->enum('gender', ['male', 'female']);
             $table->string('password');
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default('imgs/profilePics/ProfPic (3).PNG');
             $table->text('about')->nullable();
             $table->rememberToken();
             $table->timestamps();

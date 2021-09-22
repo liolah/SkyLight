@@ -16,7 +16,6 @@
     <!-- Styles -->
         <style>
                 body {
-                /* background-color: #fff; */
                 color: #ffffff;
                 background-image: url("imgs/BackGrounds/bg (5).jpg");
                 background-size: 100vw 100vh;
@@ -56,7 +55,7 @@
                 background-color: rgba(0, 0, 0, 0.4);
                 backdrop-filter: blur(3px);
                 transform: translate(-50% -50%);
-                padding: 60px;
+                padding: 30px;
                 border-radius: 20px;
                 top: 20%;
                 z-index: 20;

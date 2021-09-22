@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades;
+use App\Post;
+use Illuminate\Http\Request;
 
 use App\Mail\welcomeMail;  // For testing the welcome email
 
@@ -33,6 +36,10 @@ Auth::routes();
 // Auth::routes(['verify' => true]);  // for the email verification
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/test', function (Request $request) {
+    dd($request->input('body'));
+})->name('test');
 Route::resource('users', 'UserController')->except('create', 'store');
-Route::resource('posts', 'PostController')->only('store', 'update', 'destroy');
+Route::resource('posts', 'PostController');
+Route::resource('comments', 'CommentController')->only('store', 'update', 'destroy');
 

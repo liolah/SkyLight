@@ -1,37 +1,83 @@
 $female-color: #f76e97;
 
 .btn-female {
-  color: $female-color;
-  border-color: $female-color;
+    color: $female-color;
+    border-color: $female-color;
 }
 
 .btn-female:hover {
-  color: #fff;
-  background-color: $female-color;
-  border-color: $female-color;
+    color: #fff;
+    background-color: $female-color;
+    border-color: $female-color;
 }
 
 .btn-female:focus,
 .btn-female.focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
 }
 
 .btn-female.disabled,
 .btn-female:disabled {
-  color: $female-color;
-  background-color: transparent;
+    color: $female-color;
+    background-color: transparent;
 }
 
 .btn-female:not(:disabled):not(.disabled):active,
 .btn-female:not(:disabled):not(.disabled).active,
 .show > .btn-female.dropdown-toggle {
-  color: #fff;
-  background-color: $female-color;
-  border-color: $female-color;
+    color: #fff;
+    background-color: $female-color;
+    border-color: $female-color;
 }
 
 .btn-female:not(:disabled):not(.disabled):active:focus,
 .btn-female:not(:disabled):not(.disabled).active:focus,
 .show > .btn-female.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 250, 0.863);
+}
+
+// footer
+
+.footer {
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+}
+
+.right-sidebar ul {
+    list-style-type: none;
+}
+
+.right-sidebar:first-child {
+}
+
+.right-sidebar li {
+    display: inline-block;
+}
+
+.user-image-mini {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: inline;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.master-body {
+    overflow-x: hidden;
+    background-image: url("/imgs/BackGrounds/bg (3).png");
+    background-size: cover;
+    background-attachment: fixed;
 }

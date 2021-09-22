@@ -7,78 +7,47 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+        public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
-        $posts = Post::latest()->paginate(15);
-        return view('posts.index')->with($posts);
+        $posts = Post::latest()->paginate(5);
+        return view('posts.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
-    {
-        //
+    {  $data->title = $request->input('title');
+        dd($data);
+    // $post->title = $request->input('title');
+    //     $post->body = $request->input('body');
+    //     auth()->user()->post->create($request->all());
+        return redirect('/posts');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function show(Post $post)
     {
-        return view('post.show')->with($post);
+        return view('posts.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Post $post)
     {
-        return view('post.edit')->with($post);
+        return view('posts.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Post $post)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Post $post)
     {
         $post->delete();
@@ -87,10 +56,18 @@ class PostController extends Controller
     }
 
     protected function validatePost(){
-        return $request->validate([
-            'title' => ['required', 'string'],
+        return tap($request->validate([
+            'title' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
-            'image' => ['required', 'image', 'max:3000'],
-        ]);
-    }
+        ]) ,  function () {
+                if($request->hasFile('image')){
+                    $request->validate([
+                        'image' => ['required', 'image', 'max:3000'],
+                    ]);
+                }
+
+        }
+
+
+    );}
 }

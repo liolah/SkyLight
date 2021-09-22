@@ -13,9 +13,9 @@ $factory->define(Post::class, function (Faker $faker) {
         // 'title' => $faker->sentence(3), // Another way to generate titles
         // 'body' => $faker->text, // Lorem
         'body' => $faker->realText, // random actual words
-        'category' => $faker->randomElement(['Anime', 'Programming', 'Games', 'Paradoxes', 'Existential crisis', 'Derealization', 'Emotional problems']),
+        // 'category' => $faker->randomElement(['Anime', 'Programming', 'Games', 'Paradoxes', 'Existential crisis', 'Derealization', 'Emotional problems']),
         'image' => $faker->randomElement([
-            'imgs/profilePics/ProfPic (' . rand(1,9) . ').PNG',
+            'imgs/profilePics/ProfPic (' . rand(1,8) . ').PNG',
             NULL
         ]),
     ];

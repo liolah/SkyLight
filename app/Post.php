@@ -8,7 +8,7 @@ class Post extends Model
 {
     protected $table = 'posts';
 
-    protected $gaurded = [];
+    // protected $gaurded = [];
 
     /**
      * Get the user that owns the Post
