@@ -59,9 +59,20 @@ class UserController extends Controller
     public function update(UpdateUser $request, User $user)
     {
         $data = $request->validated();
-        $user->save($data);
-        return redirect('/users/' . $user)->with('success', true);
+        if($request->hasFile('image')){
+        $imagePath = $request->file('image')->store('Profile Pictures', 'public');
+
+        $user->update([
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'about' => $data['about'],
+            'email' => $data['email'],
+            'image' => 'storage/' . $imagePath,
+        ]);
+
+        return redirect('/users/'. $user->id);
     }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -70,7 +81,6 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-
     { 
         Auth::logout();
         $user->delete();

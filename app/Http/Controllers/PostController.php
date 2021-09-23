@@ -30,8 +30,7 @@ class PostController extends Controller
         $validatedData = $request->validated();
         if($request->hasFile('image')){
         $imagePath = $request->file('image')->store('Posts Pictures', 'public');
-    } else {$imagePath = null;
-    }
+        }
         auth()->user()->posts()->create([
             'title' => $validatedData['title'],
             'body' => $validatedData['body'],
