@@ -3,7 +3,7 @@
 @section('content')
 
 @include('layouts.leftSidebar') 
-<div class="container col-6 mb-lg-5" style="height: 100vh; background-color: white;">
+<div class="container col-6 mb-lg-5">
   <div class="card offset-2" style="width: 36rem;">
   <img src="{{ asset($user->image) }}" class="card-img-top">
   <div class="card-body">
@@ -16,9 +16,9 @@
     <li class="list-group-item">Bio: {{ $user->about }}</li>
   </ul>
   <div class="card-body">
-    <div class="row">
+    <div class="row justify-content-between">
       <div class="col-6">
-    <a href="{{ url('/users/'.Auth::user()->id.'/edit') }}" class="btn btn-info">Edit User Info</a>
+    <a href="{{ route('users.edit', $user) }}" class="btn btn-info">Edit User Info</a>
     </div>
     <div class="col-6">
     <form action="{{ url('/users/'.Auth::user()->id) }}" method="POST">
@@ -30,7 +30,6 @@
   </div>
 </div>
 </div>
-<div class="my-5"></div>
-<div class="my-5"></div>
+<div class="" style="height: 50px"></div>
 </div>
 @endsection

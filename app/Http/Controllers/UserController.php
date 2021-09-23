@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateUser;
 
 class UserController extends Controller
 {
@@ -54,18 +56,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUser $request, User $user)
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'in:male,female'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        $user->update($data);
-
+        $data = $request->validated();
+        $user->save($data);
         return redirect('/users/' . $user)->with('success', true);
     }
 
@@ -78,7 +72,8 @@ class UserController extends Controller
     public function destroy(User $user)
 
     { 
-        $user->delete();
         Auth::logout();
+        $user->delete();
+        return redirect('/');
     }
 }

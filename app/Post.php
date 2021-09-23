@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $table = 'posts';
+    // protected $table = 'posts'; // unnecessary
 
-    // protected $gaurded = [];
+    // protected $gaurded = []; // unnecessary
+
+    protected $fillable = [
+        'title', 'body', 'image',
+    ];
 
     /**
      * Get the user that owns the Post

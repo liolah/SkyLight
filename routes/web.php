@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/error/404/1', function () {
+Route::get('/error/404/1', function () { // For testing custom error pages
     return view('errors.404');
 });
 
@@ -35,10 +35,7 @@ Auth::routes();
 
 // Auth::routes(['verify' => true]);  // for the email verification
 
-// Route::get('/home', 'HomeController@index')->name('home');
-// Route::post('/test', function (Request $request) {
-//     dd($request->getContent());
-// })->name('test');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UserController')->except('create', 'store');
 Route::resource('posts', 'PostController');

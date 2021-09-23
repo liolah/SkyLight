@@ -16,7 +16,7 @@
   <div class="card my-2">
     <div class="row">
       <div class="col-md-4">
-        <img src="{{ $post->image }}" class="img-fluid rounded-start float-start ">
+        <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid rounded-start float-start ">
       </div>
       <div class="col-lg-8">
         <div class="card-body">

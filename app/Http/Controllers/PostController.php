@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Http\Requests\StorePost;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -24,12 +25,18 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
-    {  $data->title = $request->input('title');
-        dd($data);
-    // $post->title = $request->input('title');
-    //     $post->body = $request->input('body');
-    //     auth()->user()->post->create($request->all());
+    public function store(StorePost $request)
+    { 
+        $validatedData = $request->validated();
+        if($request->hasFile('image')){
+        $imagePath = $request->file('image')->store('Posts Pictures', 'public');
+    } else {$imagePath = null;
+    }
+        auth()->user()->posts()->create([
+            'title' => $validatedData['title'],
+            'body' => $validatedData['body'],
+            'image' => $imagePath,
+        ]);
         return redirect('/posts');
     }
 
@@ -45,29 +52,13 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        //
+        // Not required, will be implemented later
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        // return redirect('/posts');
-        return back();
+        return redirect('/posts');
     }
 
-    protected function validatePost(){
-        return tap($request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'body' => ['required', 'string'],
-        ]) ,  function () {
-                if($request->hasFile('image')){
-                    $request->validate([
-                        'image' => ['required', 'image', 'max:3000'],
-                    ]);
-                }
-
-        }
-
-
-    );}
 }

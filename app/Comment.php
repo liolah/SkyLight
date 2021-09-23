@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $table = 'comments';
+    // protected $table = 'comments'; // unnecessary
 
-    protected $gaurded = [];
+    // protected $gaurded = []; // unnecessary
+
+    protected $fillable = [
+        'body', 'post_id'
+    ];
 
     /**
      * Get the user that owns the Comment
