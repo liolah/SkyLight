@@ -60,18 +60,17 @@ class UserController extends Controller
     {
         $data = $request->validated();
         if($request->hasFile('image')){
-        $imagePath = $request->file('image')->store('Profile Pictures', 'public');
-
+        $imagePath = 'storage/' . $request->file('image')->store('Profile Pictures', 'public');
+        } else { $imagePath = $user->image; }
         $user->update([
             'name' => $data['name'],
             'address' => $data['address'],
             'about' => $data['about'],
             'email' => $data['email'],
-            'image' => 'storage/' . $imagePath,
+            'image' => $imagePath,
         ]);
 
         return redirect('/users/'. $user->id);
-    }
 }
 
     /**

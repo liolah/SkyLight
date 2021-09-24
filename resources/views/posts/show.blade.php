@@ -2,14 +2,15 @@
 @section('content')
 @include('layouts.leftSidebar') 
 <div class="container mb-lg-5">
-<div class="card">
+<div class="card offset-2">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Auther: <img src="{{ asset($post->user->image) }}" class="user-image-mini"> {{ $post->user->name }} <span class="ml-5">Created at: {{$post->created_at}}</span></li>
-
   </ul>
+  @if (!is_null($post->image))
   <img src="{{ asset('storage/'.$post->image) }}" class="card-img-top">
+  @endif
   <div class="card-body">
-    <h5 class="card-title">Post title: {{ $post->title }}</h5>
+    <h5 class="card-title">{{ $post->title }}</h5>
     <p class="card-text">{{ $post->body }}</p>
   </div>
   <div class="card">

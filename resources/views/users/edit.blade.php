@@ -69,7 +69,7 @@
                         <div class="form-group row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <label for="image">Profile Image</label>
-                                    <input type="file" id="file" class="row ml-0 @error('image') is-invalid @enderror" name="image" value="{{ old('file') }}">
+                                    <input type="file" id="file" class="row ml-0 @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
