@@ -74,7 +74,7 @@
 
 .master-body {
   overflow-x: hidden;
-  background-image: url("../imgs/BackGrounds/bg\ \(3\).png");
+  background-image: url("/imgs/BackGrounds/bg (3).png");
   background-size: cover;
   background-attachment: fixed;
 }
@@ -91,5 +91,18 @@
   margin-left: 50px;
   position: relative;
   top: 100px;
+}
+
+.comment-textarea {
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  border: none;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border: none;
+  background-color: transparent;
 }
 

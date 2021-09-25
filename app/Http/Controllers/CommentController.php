@@ -21,13 +21,13 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreComment $request)
+    public function store(StoreComment $request, $post)
     {   $comment = $request->validated();
         auth()->user()->comments()->create([
             'body' => $comment['body'],
-            'post_id' => $comment['post_id'],
+            'post_id' => $post,
         ]);
-        return redirect()->back();
+        return redirect('posts/' . $post);
     }
 
     /**
@@ -37,10 +37,14 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, Comment $comment) // Not requied, will be implemented later
-    // {
-    //     return back();
-    // }
+    public function update(StoreComment $request, Comment $comment) 
+    {
+        $comment = $request->validated();
+        auth()->user()->comments()->update([
+            'body' => $comment['body']
+        ]);
+        return back();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -48,9 +52,9 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Comment $comment) // Not requied, will be implemented later
-    // {
-    //     $comment->delete();
-    //     return back();
-    //
- }
+    public function destroy(Comment $comment)
+    {
+        $comment->delete();
+        return back();
+    }
+    }

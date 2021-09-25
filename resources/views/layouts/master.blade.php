@@ -16,12 +16,16 @@
     <link href="{{ asset('css/master.css') }}" rel="stylesheet">
 </head>
 <body class="master-body">
-    {{-- <div id="stars" style="position: absolute; width: 100vw; height: 100wh;"> --}}
+    @section('satrs')
+    <div id="stars" style="position: fixed; width: 100vw; height: 100wh; z-index:-1;">
+    </div>
+    @show
     @include('layouts.header')
-
-            @yield('content')
+    
+    @yield('content')
     
     @include('layouts.footer')
-    {{-- </div> --}}
+    <script src="{{ asset('js/particles.min.js') }}"></script>
+    <script src="{{ asset('js/master-custom.js') }}"></script>
 </body>
 </html>

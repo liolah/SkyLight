@@ -10,13 +10,13 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'user_id' => rand(1,DB::table('users')->max('id')),
         'title' => $faker->catchPhrase,
-        // 'title' => $faker->sentence(3), // Another way to generate titles
+        // 'title' => $faker->sentence(3), // Another way to generate titles, uses lorem
         // 'body' => $faker->text, // Lorem
         'body' => $faker->realText, // random actual words
         // 'category' => $faker->randomElement(['Anime', 'Programming', 'Games', 'Paradoxes', 'Existential crisis', 'Derealization', 'Emotional problems']),
         'image' => $faker->randomElement([
-            'imgs/profilePics/ProfPic (' . rand(1,8) . ').PNG',
-            NULL
+            'http://lorempixel.com/600/600/cats', 'http://lorempixel.com/600/600/nature', 'http://lorempixel.com/600/600/food'
+            // NULL
         ]),
     ];
 });

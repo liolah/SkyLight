@@ -39,5 +39,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UserController')->except('create', 'store');
 Route::resource('posts', 'PostController');
-Route::resource('comments', 'CommentController')->only('store', 'update', 'destroy');
+Route::resource('posts.comments', 'CommentController')->shallow()->only('store', 'update', 'destroy');
 

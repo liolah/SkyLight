@@ -21,7 +21,7 @@
     <a href="{{ route('users.edit', $user) }}" class="btn btn-info">Edit User Info</a>
     </div>
     <div class="col-6">
-    <form action="{{ url('/users/'.Auth::user()->id) }}" method="POST">
+    <form action="{{ route('users.destroy', $user ) }}" method="POST">
       @csrf
       @method('delete')
     <button type="submit" class="btn btn-danger">Delete account</button>

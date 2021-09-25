@@ -97,7 +97,15 @@ $female-color: #f76e97;
     top: 100px;
 }
 
-@for $i from 1 to 7 {
-    
-    
+.comment-textarea{
+    resize: none;
+    overflow: hidden;
+    outline: none;
+    background-color: inherit;
+}
+
+.comment-textarea:focus{
+    outline: none;
+    border: none;
+    background-color: transparent;
 }
