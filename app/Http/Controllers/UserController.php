@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('can:update,user')->only('edit', 'update');
-        $this->middleware('can:delete,user')->only('destroy');
+        $this->middleware('password.confirm')->only('destroy');
     }
     
     /**

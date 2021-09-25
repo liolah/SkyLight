@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<div style="height: 50px"></div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
