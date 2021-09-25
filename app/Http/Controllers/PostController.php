@@ -20,6 +20,12 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
+    public function userPosts()
+    {
+        $posts = auth()->user()->posts()->latest()->paginate(5);
+        return view('posts.index', compact('posts'));
+    }
+
     public function create()
     {
         return view('posts.create');
@@ -36,7 +42,7 @@ class PostController extends Controller
             'body' => $validatedData['body'],
             'image' => $imagePath,
         ]);
-        return redirect('/posts');
+        return redirect('user/posts');
     }
 
     public function show(Post $post)
@@ -49,9 +55,20 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, Post $post)
+    public function update(StorePost $request, Post $post)
     {
-        // Not required, will be implemented later
+        $data = $request->validated();
+        if(array_key_exists('image', $data)){
+            $newImage = 'storage/' . $data['image']->store('Posts Pictures', 'public');
+        } else {
+            $newImage = $post->image;
+        }
+        $post->update([
+            'title' => $data['title'],
+            'body' => $data['body'],
+            'image' => $newImage,
+        ]);
+        return redirect('user/posts');
     }
 
     public function destroy(Post $post)

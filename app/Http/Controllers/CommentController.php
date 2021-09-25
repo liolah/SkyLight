@@ -13,6 +13,7 @@ class CommentController extends Controller
         public function __construct()
     {
         $this->middleware('auth');
+        
     }
     
     /**
@@ -39,9 +40,9 @@ class CommentController extends Controller
      */
     public function update(StoreComment $request, Comment $comment) 
     {
-        $comment = $request->validated();
-        auth()->user()->comments()->update([
-            'body' => $comment['body']
+        $data = $request->validated();
+        $comment->update([
+            'body' => $data['body']
         ]);
         return back();
     }

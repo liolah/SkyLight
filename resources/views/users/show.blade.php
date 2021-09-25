@@ -15,20 +15,24 @@
     <li class="list-group-item">Address: {{ $user->address }}</li>
     <li class="list-group-item">Bio: {{ $user->about }}</li>
   </ul>
+  @can('update', $user)
   <div class="card-body">
     <div class="row justify-content-between">
       <div class="col-6">
-    <a href="{{ route('users.edit', $user) }}" class="btn btn-info">Edit User Info</a>
-    </div>
-    <div class="col-6">
-    <form action="{{ route('users.destroy', $user ) }}" method="POST">
-      @csrf
-      @method('delete')
-    <button type="submit" class="btn btn-danger">Delete account</button>
-    </form>
+        <a href="{{ route('users.edit', $user) }}" class="btn btn-info">Edit User Info</a>
+      </div>
+      @can('delete', $user)
+      <div class="col-6">
+        <form action="{{ route('users.destroy', $user ) }}" method="POST">
+          @csrf
+          @method('delete')
+          <button type="submit" class="btn btn-danger">Delete account</button>
+        </form>
+      </div>
+      @endcan
     </div>
   </div>
-</div>
+  @endcan
 </div>
 <div class="" style="height: 50px"></div>
 </div>

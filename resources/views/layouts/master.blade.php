@@ -16,10 +16,8 @@
     <link href="{{ asset('css/master.css') }}" rel="stylesheet">
 </head>
 <body class="master-body">
-    @section('satrs')
     <div id="stars" style="position: fixed; width: 100vw; height: 100wh; z-index:-1;">
     </div>
-    @show
     @include('layouts.header')
     
     @yield('content')

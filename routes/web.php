@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/error/404/1', function () { // For testing custom error pages
+Route::get('/error', function () { // For testing custom error pages
     return view('errors.404');
 });
 
@@ -40,4 +40,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController')->except('create', 'store');
 Route::resource('posts', 'PostController');
 Route::resource('posts.comments', 'CommentController')->shallow()->only('store', 'update', 'destroy');
+
+Route::get('user/posts', 'PostController@userPosts');
 
