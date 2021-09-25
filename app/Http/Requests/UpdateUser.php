@@ -27,8 +27,8 @@ class UpdateUser extends FormRequest
             'name' => ['required', 'string', 'max:255', 'unique:users,name,' . auth()->user()->id . ',id'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->user()->id . ',id'],
-            'about' => ['string'], 
-            'image'=> ['image', 'max:3000'], 
+            'about' => ['string', 'nullable'], 
+            'image'=> ['image', 'max:3000', 'nullable'], 
         ];
     }
 }
