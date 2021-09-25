@@ -7,13 +7,17 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">By <a href="{{ route('users.show', $post->user) }}"><img src="{{ asset($post->user->image) }}" class="user-image-mini mr-2">{{ $post->user->name }} </a> 
       <span class="ml-4 text-small text-muted">{{ $post->created_at->diffForHumans() }}</span>
-    <a href="{{ route('posts.edit', $post) }}" class="btn text-success btn-link offset-3 form-inline" style="margin-left: 450px">Edit</a>
-        <form class="d-inline" action="{{ route('posts.destroy', $post ) }}" method="POST">
-          @csrf
-          @method('delete')
+      @can('update', $post)
+      <a href="{{ route('posts.edit', $post) }}" class="btn text-success btn-link offset-3 form-inline" style="margin-left: 450px">Edit</a>
+      @can('delete', $post)
+      <form class="d-inline" action="{{ route('posts.destroy', $post ) }}" method="POST">
+        @csrf
+        @method('delete')
         <button type="submit" class="btn text-danger btn-link form-inline">Delete</button>
-        </form>
-        </li>
+      </form>
+      @endcan
+      @endcan
+    </li>
   </ul>
   @if (!is_null($post->image))
   <img src="{{ asset($post->image) }}" class="card-img-top">

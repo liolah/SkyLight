@@ -13,6 +13,8 @@ class UserController extends Controller
         public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:update,user')->only('edit', 'update');
+        $this->middleware('can:delete,user')->only('destroy');
     }
     
     /**

@@ -12,6 +12,8 @@ class PostController extends Controller
         public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:update,post')->only('edit', 'update');
+        $this->middleware('can:delete,post')->only('destroy');
     }
     
     public function index()

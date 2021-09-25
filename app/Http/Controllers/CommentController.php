@@ -13,6 +13,8 @@ class CommentController extends Controller
         public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:update,comment')->only('update');
+        $this->middleware('can:delete,comment')->only('destroy');
         
     }
     
